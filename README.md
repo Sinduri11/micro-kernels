@@ -1,3 +1,2 @@
 # micro-kernels
-1. false_sharing : creates 2 threads that write 2 different variables in the same cache line creating false sharing issue
-2.
+1. cond_jump: Branch direction is based on comparison with random number. Creates 50% mispredicts. 40 instructions in each path are wasted work on mispredict. 
