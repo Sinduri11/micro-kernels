@@ -2,13 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 
-// This test is based on TC test perfkernelCpp/cmov_3. It's an example where
-// the key loop has an unpredictable branch and thus benefits from cmov.
-// With static heuristics the compiler will use cmov, so we must mislead the
-// compiler with builtins in order to generate a version with branches.
-// (Compile with -DPREDICTABLE to do this.)
-
-
 #define NOINLINE __attribute__((noinline))
 #define N 20000
 
@@ -30,8 +23,6 @@ void NOINLINE init(void) {
         m_s3[i] = 1;
     }
 
-    //strncpy(string1,"this_is_string_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_1",1024);
-    //strncpy(string2,"this_is_string_aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa_2",1024);
 }
 
 void NOINLINE sel_arr(int *dst, int *s1, int *s2, int *s3) {
